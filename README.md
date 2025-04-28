@@ -42,6 +42,9 @@ Migration aplicada com sucesso diretamente do Visual Studio Terminal
 
 # 🖼️ Prints de evidência (opcional)
 Insira prints aqui comprovando:
+![Captura de tela 2025-04-27 183819](https://github.com/user-attachments/assets/63f5a802-f0fe-4a06-b665-96d7a126b8c1)
+![Captura de tela 2025-04-27 183958](https://github.com/user-attachments/assets/43a4f2fe-f5a0-4a93-bf6b-cb3c3d364d46)
+
 
 Aplicação bem-sucedida da migration no Azure
 
