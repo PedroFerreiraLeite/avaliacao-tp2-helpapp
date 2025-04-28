@@ -1,4 +1,4 @@
-# 📘 Avaliação Técnica – Clean Architecture + Azure SQL
+# 📘 Avaliação Técnica – Clean Architecture + Banco de dados local
 
 Este repositório contém minha entrega referente à avaliação técnica baseada no repositório original do professor:  
 [https://github.com/victoricoma/avaliacao-tp2-helpapp](https://github.com/victoricoma/avaliacao-tp2-helpapp)
@@ -7,7 +7,7 @@ Este repositório contém minha entrega referente à avaliação técnica basead
 
 ## ✅ Objetivo
 
-Implementar os repositórios `Category` e `Product` seguindo os padrões da Clean Architecture, aplicar a migration `Initial` e conectar a aplicação com uma instância de SQL Server no Azure.
+Implementar os repositórios `Category` e `Product` seguindo os padrões da Clean Architecture, aplicar a migration `Initial` e conectar a aplicação com uma instância de banco de dados local.
 
 ---
 
@@ -17,35 +17,26 @@ Implementar os repositórios `Category` e `Product` seguindo os padrões da Clea
 - [x] Configurações com `EntityTypeConfiguration` para `Category` e `Product`
 - [x] Injeção de dependência configurada (`DependencyInjectionAPI`)
 - [x] Migration `Initial` criada com `HasData()` para categorias
-- [x] Banco de dados SQL Server criado no Azure
-- [x] Migration aplicada com sucesso no Azure via `dotnet ef database update`
+- [x] Instanciar banco de dados local
+- [x] Criar migration via `Add-Migration Initial`
 
 ---
 # 🔧 Comandos utilizados
 ## Criação da migration
-dotnet ef migrations add Initial --project Infra.Data --startup-project WebAPI
+uso do comando `Add-Migration Initial`
 
-## Aplicação no banco de dados (Azure)
-dotnet ef database update --project Infra.Data --startup-project WebAPI
+## Aplicação no banco de dados (Local)
+uso do comando `Update-Database`
 
-
-## Aplicação no banco de dados (Azure)
-dotnet ef database update --project Infra.Data --startup-project WebAPI
-
-# 🔗 String de conexão (mascarada)
+# 🔗 String de conexão
 
 "ConnectionStrings": {
-  "DefaultConnection": "Server=tcp:servidor-sql-aluno.database.windows.net,1433;Initial Catalog=NomeDoBanco;Persist Security Info=False;User ID=aluno_azure;Password=********;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  "DefaultConnection": "Data Source=PEDRO_F_LEITE\\SQLEXPRESS01;Initial Catalog=avaliacao_tp2_pedroleite;Integrated Security=True;Pooling=False;Encrypt=True;Trust Server Certificate=True"
 }
 
-# ☁️ Configuração no Azure
-SQL Server criado no portal Azure
+# ☁️ Configuração no SSMS
 
-Banco de dados nomeado: avaliacao_tp2_aluno
-
-IP local autorizado no firewall
-
-Autenticação SQL ativada
+Banco de dados nomeado: avaliacao_tp2_pedroleite
 
 Migration aplicada com sucesso diretamente do Visual Studio Terminal
 
@@ -57,23 +48,20 @@ Aplicação bem-sucedida da migration no Azure
 Tabelas e dados populados
 
 # 👨‍💻 Dados do aluno
-Nome: [Seu Nome Aqui]
-Curso: Desenvolvimento de Sistemas – 3º Semestre
+Nome: Pedro Ferreira Leite
+Curso: Desenvolvimento de Software Multiplataforma – 3º Semestre
 
 Professor: Victor Icoma
 
-Branch da entrega: avaliacao-githubaluno
+Branch da entrega: avaliacao-PedroFerreiraLeite
 
 ## 🧱 Estrutura da aplicação
 
-```bash
-📦 src
- ┣ 📂 Domain
- ┣ 📂 Application
- ┣ 📂 Infra
- ┃ ┣ 📂 Data
+ ┣ 📂 HelpApp.Domain
+ ┣ 📂 HelpApp.Application
+ ┣ 📂 HelpApp.Infra.Data
  ┃ ┃ ┣ 📂 Migrations
  ┃ ┃ ┣ 📂 Repositories
  ┃ ┃ ┗ 📂 EntityConfiguration
- ┗ 📂 WebAPI
-
+ ┗ 📂 HelpApp.API
+ ┗ 📂 HelpApp.Infra.IoC
